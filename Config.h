@@ -7,6 +7,7 @@
 #define DIR1PIN 3
 #define STEP2PIN 4
 #define DIR2PIN 5
-#define MAXSPEED 6000
+#define MAXSTEPSPEED 6000
+#define STEARINGPERCENTAGE 0.1
 
 #endif

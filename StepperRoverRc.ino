@@ -15,7 +15,7 @@ float speedStepper1 = 0;
 float speedStepper2 = 0;
 float rcChanel1 = 0.0;
 float rcChanel2 = 0.0;
-
+float rcChanel1ramping = 0.0;
 
 
 void setup()
@@ -28,13 +28,11 @@ void setup()
 					   //Note some problems will be reported on the serial monitor
 	Serial.println(F("Interrupts Set; starting "));
 	
-	Stepper1.setMaxSpeed(MAXSPEED);
+	Stepper1.setMaxSpeed(MAXSTEPSPEED);
 //	Stepper1.setAcceleration(1000);
 //	Stepper1.setSpeed(100);
-	Stepper2.setMaxSpeed(MAXSPEED);
+	Stepper2.setMaxSpeed(MAXSTEPSPEED);
 //	Stepper2.setAcceleration(2000);
-
-
 }
 
 void loop()
@@ -53,12 +51,23 @@ void loop()
 		Serial.print(",");
 		Serial.println(rcChanel2);
 
-		speedStepper1 = MAXSPEED * rcChanel1;
-		speedStepper2 = MAXSPEED * rcChanel1;
+		if (rcChanel1 < 0.05 & rcChanel1 > -0.05)
+		{
+			rcChanel1 = 0;
+		}
+
+		rcChanel1ramping = rcChanel1;
+		
+		float maxFwRwSpeed = 1.0 - STEARINGPERCENTAGE;
+		
+		speedStepper1 = ((maxFwRwSpeed * rcChanel1ramping) - (STEARINGPERCENTAGE * rcChanel2))*MAXSTEPSPEED;
+		speedStepper2 = ((maxFwRwSpeed * rcChanel1ramping) + (STEARINGPERCENTAGE * rcChanel2))*MAXSTEPSPEED;
 
 		Stepper1.setSpeed(speedStepper1);
 		Stepper2.setSpeed(speedStepper2);
+	
 	}
+
 	Stepper1.runSpeed();
 	Stepper2.runSpeed();
 
