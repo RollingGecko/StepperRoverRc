@@ -56,6 +56,11 @@ void loop()
 			rcChanel1 = 0;
 		}
 
+		if (rcChanel2 < 0.05 & rcChanel2 > -0.05)
+		{
+			rcChanel2 = 0;
+		}
+
 		rcChanel1ramping = rcChanel1;
 		
 		float maxFwRwSpeed = 1.0 - STEARINGPERCENTAGE;
