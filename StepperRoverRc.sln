@@ -7,10 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StepperRoverRc", "StepperRo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E58C84A2-4054-4498-91F5-7A1D17B4FB3D}"
 	ProjectSection(SolutionItems) = preProject
-		F:\HiDrive\dev\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino = F:\HiDrive\dev\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino
+		..\..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino = ..\..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sketch2", "Sketch2\Sketch2.vcxproj", "{65C3768F-364D-4A9A-B279-8FD232BFA887}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +20,6 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
-		{65C3768F-364D-4A9A-B279-8FD232BFA887}.Debug|x86.ActiveCfg = Debug|Win32
-		{65C3768F-364D-4A9A-B279-8FD232BFA887}.Debug|x86.Build.0 = Debug|Win32
-		{65C3768F-364D-4A9A-B279-8FD232BFA887}.Release|x86.ActiveCfg = Release|Win32
-		{65C3768F-364D-4A9A-B279-8FD232BFA887}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
