@@ -17,7 +17,11 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 //Uncomment to enable debugging Serial prints
 //#define DEBUGING
 
-//Pin setting
+//Pin settings RC
+#define FWRWRCCHANNELPIN	6
+#define STEARRCCHANNELPIN	7
+
+//Pin setting Stepper
 #define STEP1PIN	2
 #define DIR1PIN		3
 #define STEP2PIN	4

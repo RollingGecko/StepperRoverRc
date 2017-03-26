@@ -18,7 +18,7 @@ AccelStepper Stepper2(1, STEP2PIN, DIR2PIN);
 #define NUM_RC_CHANNELS 2 //You need to specify how many pins you want to use
 #include <PinChangeInt.h>  //https://github.com/GreyGnome/PinChangeInt
 const uint8_t RC_Channel_Pin[NUM_RC_CHANNELS] = {
-	6,7 };//Here I specify I want to listen to pins A8 to A13 of my mega
+	FWRWRCCHANNELPIN,STEARRCCHANNELPIN };//Here I specify I want to listen to pins A8 to A13 of my mega
 
 uint16_t RC_Channel_Value[NUM_RC_CHANNELS]; //This variable will contain the values read from the RC signal
 #include "RCLib.h" //https://github.com/jantje/ArduinoLibraries/tree/master/RCLib ; This include needs all declarations above. Do not try to move it up or it won't compile
