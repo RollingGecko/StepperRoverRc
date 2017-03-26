@@ -15,21 +15,22 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 AccelStepper Stepper1(1,STEP1PIN,DIR1PIN);
 AccelStepper Stepper2(1, STEP2PIN, DIR2PIN);
 
-#define NUM_RC_CHANNELS 2 //You need to specify how many pins you want to use
+#define NUM_RC_CHANNELS 3 //You need to specify how many pins you want to use
 #include <PinChangeInt.h>  //https://github.com/GreyGnome/PinChangeInt
 const uint8_t RC_Channel_Pin[NUM_RC_CHANNELS] = {
-	FWRWRCCHANNELPIN,STEARRCCHANNELPIN };//Here I specify I want to listen to pins A8 to A13 of my mega
+	FWRWRCCHANNELPIN,STEARRCCHANNELPIN, SENSRCCHANNELPIN};//Here I specify I want to listen to pins A8 to A13 of my mega
 
 uint16_t RC_Channel_Value[NUM_RC_CHANNELS]; //This variable will contain the values read from the RC signal
 #include "RCLib.h" //https://github.com/jantje/ArduinoLibraries/tree/master/RCLib ; This include needs all declarations above. Do not try to move it up or it won't compile
 
 float speedStepper1 = 0;
 float speedStepper2 = 0;
-float rcChannel1 = 0.0;
-float rcChannel2 = 0.0;
-float rcChannel1ramping = 0.0;
+float fwRwChannel = 0.0;
+float stearChannel = 0.0;
+float sensChannel = 0.0;
+float fwRwChannelramping = 0.0;
 int intervalCounter = 0;
-
+float fwRwSensAdj = 0.0;
 void setup()
 {
 	SetRCInterrupts(); //This method will do all the config foe you.
@@ -55,58 +56,70 @@ void loop()
 	if (flag = getChannelsReceiveInfo()) //Here you read the RC flag contains all the channels that have a response
 										 // see duane's excellent articles on how this works
 	{
-		rcChannel1 = map(RC_Channel_Value[0], 1100, 1900, -100, 100) / 100.00;
-		rcChannel2 = map(RC_Channel_Value[1], 1100, 1900, -100, 100) / 100.00;
+		fwRwChannel = map(RC_Channel_Value[0], 1100, 1900, -100, 100) / 100.00;
+		stearChannel = map(RC_Channel_Value[1], 1100, 1900, -100, 100) / 100.00;
+		sensChannel = map(RC_Channel_Value[2], 1100, 1900, 0, 100) / 100.00;
 		
 //Debugging Stuff	
 #ifdef DEBUGING
 		Serial.print(RC_Channel_Value[0]);
 		Serial.print(",");
-		Serial.print(rcChannel1);
+		Serial.print(fwRwChannel);
 		Serial.print(" ");
 		Serial.print(RC_Channel_Value[1]);
 		Serial.print(",");
-		Serial.println(rcChannel2);
+		Serial.print(stearChannel);
+		Serial.print(" ");
+		Serial.print(RC_Channel_Value[2]);
+		Serial.print(",");
+		Serial.print(sensChannel);
 #endif
+		fwRwSensAdj = fwRwChannel*sensChannel;
 //Zero-Damping
-		if (rcChannel1 < 0.05 && rcChannel1 > -0.05)
+		if (fwRwSensAdj < ZERODAMPING && fwRwSensAdj > -(ZERODAMPING))
 		{
-			rcChannel1 = 0;
+			fwRwSensAdj = 0;
 		}
 
-		if (rcChannel2 < 0.05 && rcChannel2 > -0.05)
+		if (stearChannel < ZERODAMPING && stearChannel > -(ZERODAMPING))
 		{
-			rcChannel2 = 0;
+			stearChannel = 0;
 		}
 	}
+
 //Ramping
 	if (intervalCounter == INTERVALSTEPSIZE)
 	{
-		if (abs(rcChannel1 - rcChannel1ramping) > RAMP)
+		if (abs(fwRwSensAdj - fwRwChannelramping) > RAMP)
 		{
-			if ((rcChannel1 - rcChannel1ramping) > 0)
+			if ((fwRwSensAdj - fwRwChannelramping) > 0)
 			{
-				rcChannel1ramping = rcChannel1ramping + RAMP;
+				fwRwChannelramping = fwRwChannelramping + RAMP;
 			}			
-			if ((rcChannel1 - rcChannel1ramping) < 0)
+			if ((fwRwSensAdj - fwRwChannelramping) < 0)
 			{
-				rcChannel1ramping = rcChannel1ramping - RAMP;
+				fwRwChannelramping = fwRwChannelramping - RAMP;
 			}
 		}
 		else
 		{
-			rcChannel1ramping = rcChannel1;
+			fwRwChannelramping = fwRwSensAdj;
 		}
 		
 		intervalCounter = 0;
 	}
+	Serial.print("FwRwRamp: ");
+	Serial.print(fwRwChannelramping);
 
 	intervalCounter++;
 	
 	float maxFwRwSpeed = 1.0 - STEARINGPERCENTAGE;
 		
-		speedStepper1 = ((maxFwRwSpeed * rcChannel1ramping) - (STEARINGPERCENTAGE * rcChannel2))*MAXSTEPSPEED;
-		speedStepper2 = ((maxFwRwSpeed * rcChannel1ramping) + (STEARINGPERCENTAGE * rcChannel2))*MAXSTEPSPEED;
+		speedStepper1 = ((maxFwRwSpeed * fwRwChannelramping) - (STEARINGPERCENTAGE * stearChannel))*MAXSTEPSPEED;
+		speedStepper2 = ((maxFwRwSpeed * fwRwChannelramping) + (STEARINGPERCENTAGE * stearChannel))*MAXSTEPSPEED;
+
+		Serial.print("SpeedStepper1: ");
+		Serial.println(speedStepper1);
 
 		Stepper1.setSpeed(speedStepper1);
 		Stepper2.setSpeed(speedStepper2);

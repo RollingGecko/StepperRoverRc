@@ -15,11 +15,12 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define config_h
 
 //Uncomment to enable debugging Serial prints
-//#define DEBUGING
+#define DEBUGING
 
 //Pin settings RC
 #define FWRWRCCHANNELPIN	6
 #define STEARRCCHANNELPIN	7
+#define SENSRCCHANNELPIN	8
 
 //Pin setting Stepper
 #define STEP1PIN	2
@@ -34,8 +35,10 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 //reduces the max FwRw Speed by this percentage to allow acceleration for stearing
 #define STEARINGPERCENTAGE 0.2
 
+//Zerodamping
+#define ZERODAMPING 0.05
 //Ramping settings
 #define INTERVALSTEPSIZE	100
-#define RAMP				0.02
+#define RAMP				0.2
 
 #endif
