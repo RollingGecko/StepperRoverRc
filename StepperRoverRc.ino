@@ -108,19 +108,20 @@ void loop()
 		
 		intervalCounter = 0;
 	}
+#ifdef DEBUGING
 	Serial.print("FwRwRamp: ");
 	Serial.print(fwRwChannelramping);
-
+#endif
 	intervalCounter++;
 	
 	float maxFwRwSpeed = 1.0 - STEARINGPERCENTAGE;
 		
 		speedStepper1 = ((maxFwRwSpeed * fwRwChannelramping) - (STEARINGPERCENTAGE * stearChannel))*MAXSTEPSPEED;
 		speedStepper2 = ((maxFwRwSpeed * fwRwChannelramping) + (STEARINGPERCENTAGE * stearChannel))*MAXSTEPSPEED;
-
+#ifdef DEBUGING
 		Serial.print("SpeedStepper1: ");
 		Serial.println(speedStepper1);
-
+#endif
 		Stepper1.setSpeed(speedStepper1);
 		Stepper2.setSpeed(speedStepper2);
 		
