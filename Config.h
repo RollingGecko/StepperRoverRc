@@ -25,8 +25,8 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 //Pin setting Stepper
 #define STEP1PIN	2
 #define DIR1PIN		3
-#define STEP2PIN	4
-#define DIR2PIN		5
+#define STEP2PIN	9
+#define DIR2PIN		10
 
 //definition of Max Speed in steps
 #define MAXSTEPSPEED 6000
@@ -38,7 +38,7 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 //Zerodamping
 #define ZERODAMPING 0.05
 //Ramping settings
-#define INTERVALSTEPSIZE	100
-#define RAMP				0.2
+#define INTERVALSTEPSIZE	1000
+#define RAMP				0.05
 
 #endif
