@@ -15,7 +15,7 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define config_h
 
 //Uncomment to enable debugging Serial prints
-#define DEBUGING
+// #define DEBUGING
 
 //Pin settings RC
 #define FWRWRCCHANNELPIN	6
@@ -28,8 +28,13 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define STEP2PIN	9
 #define DIR2PIN		10
 
+//Invert steppers
+
+#define INVSTEPPER1	-1
+#define INVSTEPPER2	1
+
 //definition of Max Speed in steps
-#define MAXSTEPSPEED 6000
+#define MAXSTEPSPEED 3000
 
 //Stearing speed in percent of max speed
 //reduces the max FwRw Speed by this percentage to allow acceleration for stearing
@@ -39,6 +44,6 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define ZERODAMPING 0.05
 //Ramping settings
 #define INTERVALSTEPSIZE	1000
-#define RAMP				0.05
+#define RAMP				0.03
 
 #endif

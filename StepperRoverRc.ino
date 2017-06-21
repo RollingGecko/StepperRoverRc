@@ -122,8 +122,8 @@ void loop()
 		Serial.print("SpeedStepper1: ");
 		Serial.println(speedStepper1);
 #endif
-		Stepper1.setSpeed(speedStepper1);
-		Stepper2.setSpeed(speedStepper2);
+		Stepper1.setSpeed( INVSTEPPER1 * speedStepper1);
+		Stepper2.setSpeed(INVSTEPPER2 * speedStepper2);
 	}
 	intervalCounter++;
 		
