@@ -34,7 +34,7 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define INVSTEPPER2	1
 
 //definition of Max Speed in steps
-#define MAXSTEPSPEED 3000
+#define MAXSTEPSPEED 6000
 
 //Stearing speed in percent of max speed
 //reduces the max FwRw Speed by this percentage to allow acceleration for stearing
@@ -43,7 +43,7 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 //Zerodamping
 #define ZERODAMPING 0.05
 //Ramping settings
-#define INTERVALSTEPSIZE	1000
-#define RAMP				0.03
+#define INTERVALSTEPSIZE	5000
+#define RAMP				0.1
 
 #endif
