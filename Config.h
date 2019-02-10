@@ -14,19 +14,36 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #ifndef config_h
 #define config_h
 
-//Uncomment to enable debugging Serial prints
-// #define DEBUGING
+#define TEENSY
 
+//Uncomment to enable debugging Serial prints
+ #define DEBUGING
+
+//Nano
 //Pin settings RC
-#define FWRWRCCHANNELPIN	6
-#define STEARRCCHANNELPIN	7
-#define SENSRCCHANNELPIN	8
+//#define FWRWRCCHANNELPIN	6
+//#define STEARRCCHANNELPIN	7
+//#define SENSRCCHANNELPIN	8
+//
+////Pin setting Stepper
+//#define STEP1PIN	2
+//#define DIR1PIN		3
+//#define STEP2PIN	9
+//#define DIR2PIN		10
+
+
+//TEENSY32
+//Pin settings RC
+#define FWRWRCCHANNELPIN	13
+#define STEARRCCHANNELPIN	14
+#define SENSRCCHANNELPIN	15
 
 //Pin setting Stepper
-#define STEP1PIN	2
-#define DIR1PIN		3
-#define STEP2PIN	9
-#define DIR2PIN		10
+#define STEP1PIN	16
+#define DIR1PIN		17
+#define STEP2PIN	18
+#define DIR2PIN		19
+
 
 //Invert steppers
 
@@ -34,7 +51,7 @@ Copyright 2017 - 2020 Andreas Chaitidis Andreas.Chaitidis@gmail.com
 #define INVSTEPPER2	1
 
 //definition of Max Speed in steps
-#define MAXSTEPSPEED 6000
+#define MAXSTEPSPEED 100
 
 //Stearing speed in percent of max speed
 //reduces the max FwRw Speed by this percentage to allow acceleration for stearing

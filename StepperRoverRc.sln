@@ -1,14 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StepperRoverRc", "StepperRoverRc.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E58C84A2-4054-4498-91F5-7A1D17B4FB3D}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino = ..\..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino
+		..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino = ..\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\Examples\Maga6ChanelsA8_A13\Maga6ChanelsA8_A13.ino
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AccelStepper", "D:\HiDrive\dev\BaseFiles\ARduino_1_5_1_libraries\libraries\AccelStepper\AccelStepper.vcxitems", "{00CCA3E3-2C86-4D52-A519-20E7A6D7A2BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RCLib", "D:\HiDrive\dev\BaseFiles\ARduino_1_5_1_libraries\libraries\RCLib\RCLib.vcxitems", "{DF71DCF8-E8A3-4B22-8939-FDE61163070A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PinChangeInt", "D:\HiDrive\dev\BaseFiles\ARduino_1_5_1_libraries\libraries\PinChangeInt\PinChangeInt.vcxitems", "{5E0FB49A-33F9-4975-9B3F-F77080732A89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99C4F8D5-F655-43A2-BC11-A05872AD35B6}
 	EndGlobalSection
 EndGlobal
